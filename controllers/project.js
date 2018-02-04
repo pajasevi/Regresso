@@ -54,6 +54,7 @@ exports.postProjects = (req, res, next) => {
 exports.getProject = (req, res, next) => {
   Project.findOne({ _id: req.params.id })
     .populate('screens')
+		.populate('users')
     .exec((err, project) => {
       if (err) return next(err);
 
