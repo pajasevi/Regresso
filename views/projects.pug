@@ -1,0 +1,37 @@
+extends layout
+
+block content
+    .page-header
+        h3 Projects
+
+        form.form-horizontal(method='POST')
+            input(type='hidden', name='_csrf', value=_csrf)
+            .form-group
+                label(class='col-sm-2 control-label', for='name') Name
+                .col-sm-8
+                    input.form-control(type='text', name='name', id='name')
+            .form-group
+                label(class='col-sm-2 control-label', for='description') Description
+                .col-sm-8
+                    input.form-control(type='text', name='description', id='description')
+            .form-group
+                .col-sm-offset-2.col-sm-8
+                    button.btn.btn-primary(type='submit')
+                        | Create
+        hr
+        if projects.length
+            table.table
+                tr
+                    th Name
+                    th Description
+                    th
+                for project in projects
+                    tr
+                        td= project.name
+                        td= project.description
+                        td.text-right
+                            .btn-group
+                                a.btn.btn-primary(href='/project/' + project._id) Manage
+                                a.btn.btn-danger(href='/project/' + project._id + '/delete', onClick='return confirm("Really delete this project?")') Delete
+        else
+            h4 No projects found

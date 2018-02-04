@@ -1,0 +1,31 @@
+extends layout
+
+block content
+    .page-header
+        h3= project.name
+        p= project.description
+        hr
+        if project.screens.length
+            table.table
+                tr
+                    th URL
+                    th
+                for screen in project.screens
+                    tr
+                        td= screen.url
+                        td.text-right
+                            .btn-group
+                                a.btn.btn-danger(href='/screen/' + screen._id + '/delete', onClick='return confirm("Really delete this project?")') Delete
+        else
+            h4 No screens found
+        hr
+        form.form-horizontal(method='POST', action='/screen')
+            input(type='hidden', name='_csrf', value=_csrf)
+            input(type='hidden', name='projectId', value=project._id)
+            .form-group
+                label(class='col-sm-1 control-label', for='url') URL
+                .col-sm-7
+                    input.form-control(type='url', name='url', id='url', required)
+                .col-sm-4
+                    button.btn.btn-primary(type='submit')
+                        | Add
