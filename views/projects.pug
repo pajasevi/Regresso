@@ -31,7 +31,7 @@ block content
                         td= project.description
                         td.text-right
                             .btn-group
-                                a.btn.btn-primary(href='/project/' + project._id) Manage
+                                a.btn.btn-primary(href='/project/' + project._id) Open
                                 a.btn.btn-danger(href='/project/' + project._id + '/delete', onClick='return confirm("Really delete this project?")') Delete
         else
             h4 No projects found

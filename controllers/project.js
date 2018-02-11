@@ -23,7 +23,7 @@ exports.getProjects = (req, res, next) => {
  * POST /projects
  * Create new project.
  */
-exports.postProjects = (req, res, next) => {
+exports.postCreateProject = (req, res, next) => {
   req.assert('name', 'Name cannot be blank').notEmpty();
 
   const errors = req.validationErrors();
@@ -69,7 +69,7 @@ exports.getProject = (req, res, next) => {
  * GET /project/:id/delete
  * Delete project.
  */
-exports.deleteProject = (req, res, next) => {
+exports.postDeleteProject = (req, res, next) => {
   Project.findOneAndRemove({ _id: req.params.id }, (err, deletedProject) => {
     if (err) return next(err);
 

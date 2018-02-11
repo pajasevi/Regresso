@@ -1,0 +1,38 @@
+extends layout
+
+block content
+    .page-header
+        h3= title
+        a.btn.btn-primary(href='/screen/' + screen._id + '/compare') Compare
+        hr
+        .row
+            .col-md-3.text-center
+                a(href='/screens/' + screen._id + '/golden-wide.png')
+                    img(src='/screens/' + screen._id + '/golden-wide.png', height="100")
+            .col-md-3.text-center
+                a(href='/screens/' + screen._id + '/golden-laptop.png')
+                    img(src='/screens/' + screen._id + '/golden-laptop.png', height="100")
+            .col-md-3.text-center
+                a(href='/screens/' + screen._id + '/golden-tablet.png')
+                    img(src='/screens/' + screen._id + '/golden-tablet.png', height="100")
+            .col-md-3.text-center
+                a(href='/screens/' + screen._id + '/golden-mobile.png')
+                    img(src='/screens/' + screen._id + '/golden-mobile.png', height="100")
+        hr
+        if screen.comparisons.length
+            for comparison in screen.comparisons
+                .row
+                    .col-md-3.text-center
+                        a(href='/screens/' + screen._id + '/' + comparison + '/output-wide.png')
+                            img(src='/screens/' + screen._id + '/' + comparison + '/output-wide.png', height="100")
+                    .col-md-3.text-center
+                        a(href='/screens/' + screen._id + '/' + comparison + '/output-laptop.png')
+                            img(src='/screens/' + screen._id + '/' + comparison + '/output-laptop.png', height="100")
+                    .col-md-3.text-center
+                        a(href='/screens/' + screen._id + '/' + comparison + '/output-tablet.png')
+                            img(src='/screens/' + screen._id + '/' + comparison + '/output-tablet.png', height="100")
+                    .col-md-3.text-center
+                        a(href='/screens/' + screen._id + '/' + comparison + '/output-mobile.png')
+                            img(src='/screens/' + screen._id + '/' + comparison + '/output-mobile.png', height="100")
+        else
+            h4 No comparisons found

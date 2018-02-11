@@ -15,6 +15,7 @@ block content
                         td= screen.url
                         td.text-right
                             .btn-group
+                                a.btn.btn-primary(href='/screen/' + screen._id) Open
                                 a.btn.btn-danger(href='/screen/' + screen._id + '/delete', onClick='return confirm("Really delete this project?")') Delete
         else
             h4 No screens found
